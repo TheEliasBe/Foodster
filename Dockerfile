@@ -1,14 +1,19 @@
+
 FROM python:latest
 
-RUN apt update
-RUN apt -y install \
+RUN apt-get update
+RUN apt-get -y install \
     tesseract-ocr \
-    tesseract-ocr-jpn \
-    libgl1-mesa-dev;
+    tesseract-ocr-deu \
+    libgl1-mesa-dev; 
 RUN apt-get clean
 
-COPY . /opt/app
-WORKDIR /opt/app
-RUN pip install -r requirements.txt
+RUN pip install --upgrade pip; \
+    pip install \
+    pillow \
+    opencv-python \
+    pytesseract \
+    meilisearch \
+    pandas
 
-# ENTRYPOINT ["/usr/bin/tail", "-f", "/dev/null"]
+ENTRYPOINT ["/usr/bin/tail", "-f", "/dev/null"]

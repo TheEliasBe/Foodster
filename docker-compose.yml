@@ -4,6 +4,25 @@ services:
   tesseractpython:
     build: ./
     image: tesseractpython
-    container_name: tesseractpython
+    container_name: tesseractpythondeu
     volumes:
       - .:/opt
+  meilisearch:
+    build: ./
+    image: getmeili/meilisearch
+    container_name: meilisearch
+    ports:
+      - 7700:7700
+    volumes:
+      - ./db/data.ms/:/data.ms
+  api:
+    restart: on-failure
+    build:
+      context: ./api
+    ports:
+      - 8000:8000
+    volumes:
+      - ./api:/usr/src/app
+    links:
+      - meilisearch:meilisearch
+
