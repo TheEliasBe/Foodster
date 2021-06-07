@@ -20,7 +20,7 @@ class ProductView(APIView):
             search_query = j["query"]
         except:
             search_query = "milk"
-        client = meilisearch.Client("http://meili_db:7700")
+        client = meilisearch.Client("http:/http://20.101.129.13:7700")
         index = client.index("food")
 
 

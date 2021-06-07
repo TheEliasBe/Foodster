@@ -1,2 +1,6 @@
 meilisearch
 djangorestframework
+opencv-python
+numpy
+pretty-errors
+pytesseract
